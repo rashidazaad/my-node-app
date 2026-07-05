@@ -1,0 +1,11 @@
+{
+  "name": "docker-node-demo",
+  "version": "1.0.0",
+  "description": "Simple Node.js Docker Demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Rashid",
+  "license": "MIT"
+}
