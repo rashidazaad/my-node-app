@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
 
     res.end(
         JSON.stringify({
-            message: "Hello from Dockerized Node.js App!",
+            message: "Hello, I am Rashid Azaad. and this is my first Node.js App!",
             hostname: require("os").hostname(),
             timestamp: new Date()
         })
