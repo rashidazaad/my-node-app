@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
 
     res.end(
         JSON.stringify({
-            message: "Hello, I am Rashid Azaad. and this is my first Node.js App!",
+            message: "Hello, I am Rashid Azaad. and this is my first Node.js App! WELCOME to RASHID CI/CD",
             hostname: require("os").hostname(),
             timestamp: new Date()
         })
