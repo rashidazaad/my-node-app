@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "rashidadmin/my-node-app"
-	IMAGE_TAG = "${BUILD_NUMBER}"
+        IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
     stages {
@@ -23,10 +23,10 @@ pipeline {
             }
         }
 
-	stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
-		sh 'docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest'
+                sh 'docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest'
             }
         }
 
@@ -48,9 +48,24 @@ pipeline {
             steps {
                 sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
                 sh 'docker push $IMAGE_NAME:latest'
-
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker stop node-app || true
+                docker rm node-app || true
+
+                docker run -d \
+                  --restart unless-stopped \
+                  --name node-app \
+                  -p 3000:3000 \
+                  $IMAGE_NAME:$IMAGE_TAG
+                '''
+            }
+        }
+
     }
 
     post {
