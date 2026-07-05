@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "rashidazaad/my-node-app"
+        IMAGE_NAME = "rashidadmin/my-node-app"
+	IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
     stages {
@@ -15,16 +16,24 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Verify Workspace') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:latest .'
+                sh 'pwd'
+                sh 'ls -la'
+            }
+        }
+
+	stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+		sh 'docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest'
             }
         }
 
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
+                    credentialsId: 'dockerhu2jenkins',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
@@ -37,7 +46,9 @@ pipeline {
 
         stage('Push Image') {
             steps {
+                sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
                 sh 'docker push $IMAGE_NAME:latest'
+
             }
         }
     }
