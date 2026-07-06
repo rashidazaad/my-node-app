@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 <!DOCTYPE html>
 <html>
 <head>
-<title>DevOps CI/CD Demo</title>
+<title>DevOps CI/CD Demo By Rashid Azaad</title>
 <style>
 body{
     font-family: Arial, Helvetica, sans-serif;
