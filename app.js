@@ -48,7 +48,7 @@ h1{
 
 <div class="container">
 
-<h1>🚀 Node.js CI/CD Demo</h1>
+<h1> Dear HR for your view</h1>
 
 <p class="success">
 Application is Running Successfully
@@ -75,7 +75,7 @@ Application is Running Successfully
 ✅ Docker Hub Push<br>
 
 <p class="footer">
-Developed by <strong>Rashid Shabbir Azaad</strong><br>
+Developed by <strong>Rashid Azaad and team</strong><br>
 DevOps CI/CD Learning Project with docker
 </p>
 
