@@ -75,8 +75,8 @@ Application is Running Successfully
 ✅ Docker Hub Push<br>
 
 <p class="footer">
-Developed by <strong>Rashid Shabbir</strong><br>
-DevOps CI/CD Learning Project
+Developed by <strong>Rashid Shabbir Azaad</strong><br>
+DevOps CI/CD Learning Project with docker
 </p>
 
 </div>
